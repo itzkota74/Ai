@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  godhead-api:
+    build: .
+    container_name: godhead-api
+    ports:
+      - "8080:8080"
+    environment:
+      - MLFLOW_TRACKING_URI=${MLFLOW_TRACKING_URI}
+      - MLFLOW_S3_ENDPOINT_URL=${MLFLOW_S3_ENDPOINT_URL}
+      - MLFLOW_BACKEND_URI=${MLFLOW_BACKEND_URI}
+  blockchain-node:
+    image: ghcr.io/your-org/blockchain-node:latest
+    ports:
+      - "8545:8545"
+      - "30303:30303"
