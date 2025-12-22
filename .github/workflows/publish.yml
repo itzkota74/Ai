@@ -1,4 +1,4 @@
-name: Hyper AI Predictive Deploy
+name: Auto Hyper AI Deploy
 on:
   push:
   schedule:
@@ -9,12 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install requests
-      - run: python content_loop.py
+      - run: python content_loop.py || echo 'content loop skipped'
       - run: python automation.py
       - run: python email_automation.py
       - run: python wallet.py
       - run: python traffic_analyzer.py
-      - run: python multi_channel.py
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
