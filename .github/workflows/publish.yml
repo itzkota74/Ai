@@ -1,21 +1,20 @@
-name: Ultra Predictive AI Deploy
+name: Hyper AI Predictive Deploy
 on:
   push:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "0 */6 * * *"
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: pip install requests
-      - run: python3 modules/content_loop.py
-      - run: python3 modules/automation.py
-      - run: python3 - <<PYTHON
-import os
-from modules.multi_channel import notify_success
-notify_success("Ultra Predictive AI Engine deployed successfully ✅")
-PYTHON
+      - run: python content_loop.py
+      - run: python automation.py
+      - run: python email_automation.py
+      - run: python wallet.py
+      - run: python traffic_analyzer.py
+      - run: python multi_channel.py
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
