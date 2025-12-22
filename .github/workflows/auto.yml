@@ -14,5 +14,5 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install sqlite3 requests stripe
-      - run: python automation/automation.py
-      - run: python automation/email_automation.py
+      - run: python automation.py
+      - run: python email_automation.py
