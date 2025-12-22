@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AI Revenue Engine</title>
+</head>
+<body>
+<h1>AI Revenue Engine</h1>
+<p>Live monetized pages:</p>
+<ul id="list"></ul>
+<script>
+fetch('pages.json').then(r=>r.json()).then(p=>{
+  const ul=document.getElementById('list');
+  p.forEach(x=>{
+    const li=document.createElement('li');
+    li.innerHTML=`<a href="${x}">${x}</a>`;
+    ul.appendChild(li);
+  });
+});
+</script>
+</body>
+</html>

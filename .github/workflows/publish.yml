@@ -1,0 +1,20 @@
+name: Publish Site
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "0 */6 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with: { python-version: "3.11" }
+      - run: python automation.py
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add site/
+          git commit -m "Auto-publish site" || echo "No changes"
+          git push
