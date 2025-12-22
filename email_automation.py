@@ -1,16 +1,11 @@
-import smtplib, os
+import os,smtplib
 from email.message import EmailMessage
-
-def send(to,sub,body):
-    msg=EmailMessage()
-    msg["From"]=os.getenv("FROM_EMAIL")
-    msg["To"]=to
-    msg["Subject"]=sub
-    msg.set_content(body)
-    with smtplib.SMTP(os.getenv("SMTP_HOST"), int(os.getenv("SMTP_PORT")) ) as s:
-        s.starttls()
-        s.login(os.getenv("SMTP_USER"), os.getenv("SMTP_PASS"))
-        s.send_message(msg)
-
-# Example (commented until creds set)
-# send("user@example.com","Welcome","Your AI site is live")
+msg=EmailMessage()
+msg["From"]=os.environ["FROM_EMAIL"]
+msg["To"]=os.environ["ADMIN_EMAIL"]
+msg["Subject"]="AI Revenue Engine Deployed"
+msg.set_content("Site updated with new niches & pages.")
+with smtplib.SMTP(os.environ["SMTP_HOST"],int(os.environ["SMTP_PORT"])) as s:
+    s.starttls()
+    s.login(os.environ["SMTP_USER"],os.environ["SMTP_PASS"])
+    s.send_message(msg)
