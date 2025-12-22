@@ -7,3 +7,4 @@ Traceback (most recent call last):
                          ~~~~~~~~~~^^^^^^^^^^
   File "<frozen os>", line 714, in __getitem__
 KeyError: 'SYS_ID'
+/data/data/com.termux/files/usr/bin/sh: 1: /data/data/com.termux/files/home/Ai/auto_deploy.sh: not found
