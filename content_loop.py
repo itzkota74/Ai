@@ -1,5 +1,4 @@
 import json, requests, os
-NICHES_FILE="niches.json"
 OUTPUT_FILE="rewritten_content.json"
 
 trending=[]
