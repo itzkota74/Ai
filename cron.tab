@@ -1,1 +1,0 @@
-*/30 * * * * /data/data/com.termux/files/home/Ai/auto_deploy.sh >> /data/data/com.termux/files/home/Ai/deploy.log 2>&1
